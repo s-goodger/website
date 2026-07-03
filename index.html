@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Goodger — EU Policy Analyst</title>
+<meta name="description" content="Samuel Goodger, EU policy analyst based in Brussels. Available for media enquiries, freelance consultancy and speaking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #3D4A36;
+    --fg: #F1EEE2;
+    --muted: #BFC6B0;
+    --line: #5E6B54;
+    --hover: #56634C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s ease, color .3s ease;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Two-pane shell */
+  .shell {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 0;
+    max-width: 1120px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+  .pane-left {
+    padding: 56px 40px;
+    border-right: 1px solid var(--line);
+  }
+  .left-inner { position: sticky; top: 56px; }
+  .pane-right { padding: 56px 52px; }
+
+  /* Left content */
+  .photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    margin-bottom: 26px;
+    background: var(--hover);
+  }
+  .name { font-size: 27px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+  .title { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .avail {
+    font-size: 14px; color: var(--fg); margin-top: 22px; padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .avail .k { font-size: 11.5px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); display: block; margin-bottom: 8px; }
+  .avail p { color: var(--muted); }
+
+  .contact { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .contact a {
+    display: inline-flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--fg);
+    transition: color .2s;
+  }
+  .contact a:hover { color: var(--muted); }
+  .contact svg { width: 16px; height: 16px; flex: 0 0 auto; }
+  .loc { font-size: 14px; color: var(--muted); margin-top: 16px; }
+
+  /* Right content */
+  .block { margin-bottom: 46px; }
+  .block:last-of-type { margin-bottom: 0; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .16em; color: var(--muted); margin-bottom: 22px; }
+
+  .intro { font-size: 17px; color: var(--fg); }
+  .intro strong { font-weight: 500; }
+
+  .row { display: grid; grid-template-columns: 118px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: none; }
+  .row .when { font-size: 13px; color: var(--muted); padding-top: 2px; }
+  .row .role { font-size: 16px; font-weight: 500; }
+  .row .org { font-size: 14px; color: var(--muted); }
+  .row .org a, .row .desc a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .row .org a:hover, .row .desc a:hover { color: var(--fg); }
+  .row .desc { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+  .pubs a.pub {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 14px 0; border-bottom: 1px solid var(--line); transition: padding-left .2s;
+  }
+  .pubs a.pub:last-child { border-bottom: none; }
+  .pubs a.pub:hover { padding-left: 7px; }
+  .pubs .pub-title { font-size: 15.5px; font-weight: 500; }
+  .pubs .pub-meta { font-size: 13px; color: var(--muted); }
+  .pubs a.pub:hover .pub-title { text-decoration: underline; text-underline-offset: 4px; }
+
+  .cv-foot { margin-top: 52px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 14.5px; font-weight: 500; padding: 11px 22px; border-radius: 999px;
+    border: 1px solid var(--fg); background: var(--fg); color: var(--bg); transition: opacity .2s;
+  }
+  .btn:hover { opacity: .85; }
+  .copyr { font-size: 12.5px; color: var(--muted); margin-top: 30px; }
+
+  /* Motion */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* Responsive */
+  @media (max-width: 820px) {
+    .shell { grid-template-columns: 1fr; max-width: 620px; }
+    .pane-left { border-right: none; border-bottom: 1px solid var(--line); padding: 64px 28px 40px; }
+    .left-inner { position: static; }
+    .photo { max-width: 260px; }
+    .pane-right { padding: 40px 28px 64px; }
+    .row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <!-- LEFT -->
+  <aside class="pane-left">
+    <div class="left-inner reveal">
+      <img class="photo" src="assets/headshot.jpg" alt="Samuel Goodger">
+      <div class="name">Samuel Goodger</div>
+      <div class="title">EU Policy Analyst · Brussels</div>
+
+      <div class="avail">
+        <span class="k">Enquiries</span>
+        <p>Available for freelance EU policy research, media enquiries and public speaking. Email is the best way to reach me.</p>
+      </div>
+
+      <div class="contact">
+        <a href="mailto:s.goodger@proton.me">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          s.goodger@proton.me
+        </a>
+        <a href="https://linkedin.com/in/samuel-goodger/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.3c0-1.26-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="loc">Brussels, Belgium</div>
+    </div>
+  </aside>
+
+  <!-- RIGHT -->
+  <main class="pane-right">
+    <section class="block reveal">
+      <p class="intro">Policy Analyst at the <strong>European Policy Centre</strong>, working across AI, health and social policy. MSc in International Social and Public Policy, with EU policy experience across civil society, public affairs and EU institutions.</p>
+    </section>
+
+    <section class="block reveal">
+      <p class="label">Professional experience</p>
+      <div class="row">
+        <div class="when">2025 — Present</div>
+        <div>
+          <div class="role">Policy Analyst</div>
+          <div class="org">European Policy Centre, Brussels</div>
+          <div class="desc">Shaping the Health and Societal Resilience team's work on AI, health, labour and welfare policies. Drafting policy papers, preparing events, and moderating and speaking at events on EU AI governance, social protection and health policies.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2025 — Present</div>
+        <div>
+          <div class="role">Co-founder, Policy &amp; Outreach Lead</div>
+          <div class="org"><a href="https://speakeu.com/" target="_blank" rel="noopener">SpeakEU</a></div>
+          <div class="desc">Non-profit initiative developing a multilingual Civic AI tool to better connect citizens with the right petition and participatory democracy mechanisms. Incubated at European Forum Alpbach, finalist at the 2025 Alpbach Ideas contest.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2024 — 2025</div>
+        <div>
+          <div class="role">International AI Governance Fellow</div>
+          <div class="org">Talos Fellowship, Brussels</div>
+          <div class="desc">Highly selective AI governance fellowship, focusing primarily on EU policy, covering compute governance, safety evaluations, and economic and security implications. Included a six-month placement as AI Policy Fellow at the European Policy Centre.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2024 — 2025</div>
+        <div>
+          <div class="role">Public Affairs Intern</div>
+          <div class="org">Brunswick Group, Brussels</div>
+          <div class="desc">Daily and weekly client updates on technology, energy, consumer and healthcare files; monitoring of Council, Commission and Parliament committee activity.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2023 — 2024</div>
+        <div>
+          <div class="role">Schuman Trainee — EMPL Policy Unit</div>
+          <div class="org">European Parliament, Brussels</div>
+          <div class="desc">Researched and drafted briefings for EMPL Committee missions and own-initiative reports. Co-authored an in-depth analysis on the situation of young carers in Europe.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <p class="label">Education</p>
+      <div class="row">
+        <div class="when">2022 — 2023</div>
+        <div>
+          <div class="role">MSc International Social and Public Policy (Merit)</div>
+          <div class="org">London School of Economics and Political Science</div>
+          <div class="desc">Dissertation on generative AI and the Italian workforce. Coursework in EU policymaking, quantitative analysis (using R), behavioural public policy, and tech policy.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2019 — 2022</div>
+        <div>
+          <div class="role">BSc International Relations and Diplomatic Affairs (109/110)</div>
+          <div class="org">University of Bologna</div>
+          <div class="desc">Erasmus+ exchange at Sciences Po Lyon; study abroad in Buenos Aires. Communications team member for the Hikma Team, producing social media content and moderating workshops at the 2021 <a href="https://www.hikmasummit.com/" target="_blank" rel="noopener">Hikma Summit of International Relations</a>, which hosted guests including Nobel laureate economist Joseph Stiglitz.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <p class="label">Selected publications</p>
+      <div class="pubs">
+        <a class="pub" href="https://www.epc.eu/publication/fostering-ai-resilience-in-the-eu-labour-market/" target="_blank" rel="noopener">
+          <span class="pub-title">Fostering AI resilience in the EU labour market</span>
+          <span class="pub-meta">Policy Brief · EPC · March 2026 · with Pietro Valetto and Elizabeth Kuiper</span>
+        </a>
+        <a class="pub" href="https://www.epc.eu/publication/the-eu-must-mainstream-gender-in-ai-policy/" target="_blank" rel="noopener">
+          <span class="pub-title">The EU must mainstream gender in AI policy</span>
+          <span class="pub-meta">Commentary · EPC · March 2026 · with Viktoria Henkemeier</span>
+        </a>
+        <a class="pub" href="https://www.euractiv.com/opinion/ai-literacy-is-not-a-luxury-but-brussels-is-failing-to-see-the-danger/" target="_blank" rel="noopener">
+          <span class="pub-title">AI literacy is not a luxury, but Brussels is failing to see the danger</span>
+          <span class="pub-meta">Opinion · Euractiv · March 2026</span>
+        </a>
+        <a class="pub" href="https://www.epc.eu/publication/the-value-of-health-investing-in-europes-future/" target="_blank" rel="noopener">
+          <span class="pub-title">The value of health: Investing in Europe's future</span>
+          <span class="pub-meta">Policy Brief · EPC · January 2026 · with Elizabeth Kuiper</span>
+        </a>
+        <a class="pub" href="https://www.epc.eu/publication/from-ransomware-to-statecraft-protecting-eu-healthcare-in-the-new-threat-landscape/" target="_blank" rel="noopener">
+          <span class="pub-title">From ransomware to statecraft: Protecting EU healthcare in the new threat landscape</span>
+          <span class="pub-meta">Policy Brief · EPC · November 2025 · with Elizabeth Kuiper</span>
+        </a>
+        <a class="pub" href="https://www.epc.eu/publication/regulating-general-purpose-ai-in-the-eu-an-analysis-of-the-ai-code-of-practice/" target="_blank" rel="noopener">
+          <span class="pub-title">Regulating General Purpose AI in the EU: An Analysis of the AI Code of Practice</span>
+          <span class="pub-meta">Policy Brief · EPC · September 2025 · with Giulia Torchio</span>
+        </a>
+        <a class="pub" href="https://www.europarl.europa.eu/committees/en/the-situation-of-young-carers-in-europe/product-details/20240308CAN72942" target="_blank" rel="noopener">
+          <span class="pub-title">The situation of young carers in Europe</span>
+          <span class="pub-meta">In-Depth Analysis · European Parliament (EMPL) · March 2024 · with Aoife Kennedy</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <p class="label">In the media</p>
+      <div class="pubs">
+        <a class="pub" href="https://en.philenews.com/international/eu-unveils-strategy-to-break-foreign-technology-dependence/" target="_blank" rel="noopener">
+          <span class="pub-title">Why Europe wants to break up with Big Tech?</span>
+          <span class="pub-meta">Philenews · June 2026</span>
+        </a>
+        <a class="pub" href="https://www.euronews.com/my-europe/2025/05/05/choose-europe-von-der-leyen-tells-us-scientists-threatened-by-trumps-policies" target="_blank" rel="noopener">
+          <span class="pub-title">Choose Europe: von der Leyen tells US scientists threatened by Trump's policies</span>
+          <span class="pub-meta">Euronews · May 2025</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="cv-foot reveal">
+      <a class="btn" href="assets/Samuel_Goodger_CV.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+        Download full CV
+      </a>
+      <div class="copyr">© <span id="year"></span> Samuel Goodger</div>
+    </div>
+  </main>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
